@@ -1,0 +1,27 @@
+{
+  "name": "Node.js",
+  // node 20
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
+  // 不进行网络隔离
+  "runArgs": [
+    "--network=host"
+  ],
+  "customizations": {
+    // 预装插件
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "burkeholland.simple-react-snippets",
+        "bradlc.vscode-tailwindcss"
+      ],
+      // 默认shell修改为zsh
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  },
+  // 安装Zsh及相关使用插件
+  "postCreateCommand": "git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && sed -i 's|^ZSH_THEME=\".*\"$|ZSH_THEME=\"powerlevel10k/powerlevel10k\"|' ~/.zshrc && sed -i 's|^plugins=(.*)$|plugins=(git zsh-autosuggestions zsh-syntax-highlighting)|' ~/.zshrc"
+}
